@@ -8,7 +8,7 @@
 </head>
 <body>
 
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<nav class="navbar navbar-inverse navbar-fixed-top" id="newcolor" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="navbar-header">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -17,13 +17,13 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="#">Treebook</a>
+	    <a class="navbar-brand" href="#">Vennue</a>
 	  </div>
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse navbar-ex1-collapse">
 	  	<ul class="nav navbar-nav pull-left">
-	   <li><%= link_to "All Statuses", statuses_path %></li>
+	   <li><%= link_to "Aha! Moments", statuses_path %></li>
 	   	</ul>
 	    <ul class="nav navbar-nav pull-right">
 	    	 <% if user_signed_in? %>
@@ -38,9 +38,12 @@
 	</nav>
 
 	<div class="container">
-
-			 <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+		<% flash.each do |type, message| %>
+			<div class="alert <%= flash_class type %>">
+				<button type="button" class="close" data-dismiss="alert">&times;</button> 
+				<%= message %>
+			</div>
+		<% end %>
        
 		<%= yield %>
 	</div>
